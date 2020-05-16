@@ -5,11 +5,19 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    cart: [],
+    shop: [],
   },
   mutations: {
   },
   actions: {
   },
-  modules: {
+  getters: {
+    cart(state) {
+      return state.cart;
+    },
+    shop(state) {
+      return state.shop;
+    },
   },
 });

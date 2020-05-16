@@ -2,12 +2,14 @@
   <div class="hello">
     <div v-for="item in productList" :key="item.id" style="width:200px; height:200px;">
       {{ item.name }}
+      <img :src="getImgUrl(item.id)"/>
     </div>
   </div>
 </template>
 
 <script>
 import Service from '../service/ApiService';
+import imageUrlGetter from '../tools/ImageURL';
 
 export default {
   name: 'HelloWorld',
@@ -19,7 +21,7 @@ export default {
       productList: [],
     };
   },
-  created() {
+  mounted() {
     this.loadAllProduct();
   },
   methods: {
@@ -31,6 +33,9 @@ export default {
         .catch((e) => {
           console.log(e);
         });
+    },
+    getImgUrl(pic) {
+      return imageUrlGetter(pic);
     },
   },
 };
