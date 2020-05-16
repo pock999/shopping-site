@@ -1,8 +1,11 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/">Home</router-link>
+      <div id="menu">
+        <router-link to="/Shop">商品列表</router-link>
+        <router-link to="/Cart">購物車</router-link>
+      </div>
     </div>
     <router-view/>
   </div>
@@ -10,23 +13,44 @@
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "微軟正黑體" ,Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin-top: -10px;
+  margin-left: -10px;
+  width:100%;
 }
-
+#nav a{
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+  line-height: 40px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
 #nav {
-  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  background-color: black;
+  height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width:100%;
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+#menu {
+  display: flex;
+  flex-direction: row;
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+@media (max-width:550px){
+  #nav a{
+    font-size: 20px;
+  }
+  #nav #menu a {
+    font-size: 16px;
+  }
 }
 </style>
