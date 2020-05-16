@@ -45,6 +45,14 @@
   display: flex;
   flex-direction: row;
 }
+.product-img-container {
+  width: 200px;
+  height: 200px;
+}
+.product-img-container img{
+  width: 100%;
+  height: 100%;
+}
 @media (max-width:550px){
   #nav a{
     font-size: 20px;
