@@ -1,10 +1,12 @@
 <template>
   <div class="shop">
     Shoptgreyw
-    <div v-for="item in productList" :key="item.id">
-      {{ item.name }}
-      <div class="product-img-container">
-        <img :src="getImgUrl(item.id)"/>
+    <div id="product-list">
+      <div v-for="item in productList" :key="item.id" class="product-item">
+        {{ item.name }}
+        <div class="product-img-container">
+          <img :src="getImgUrl(item.id)"/>
+        </div>
       </div>
     </div>
   </div>
@@ -29,3 +31,11 @@ export default {
   },
 };
 </script>
+<style scope>
+  #product-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-row-gap: 20px;
+    grid-column-gap: 10px;
+  }
+</style>
