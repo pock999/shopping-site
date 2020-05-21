@@ -1,10 +1,16 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link>
+      <router-link to="/">
+        <v-icon name="home"></v-icon><span class="tab-name">Home</span>
+      </router-link>
       <div id="menu">
-        <router-link to="/Shop">商品列表</router-link>
-        <router-link to="/Cart">購物車</router-link>
+        <router-link to="/Shop">
+          <v-icon name="list"></v-icon><span class="tab-name">商品頁</span>
+        </router-link>
+        <router-link to="/Cart">
+          <v-icon name="shopping-cart"></v-icon><span class="tab-name">購物車</span>
+        </router-link>
       </div>
     </div>
     <router-view/>
@@ -27,9 +33,9 @@
   color: white;
   text-decoration: none;
   font-size: 24px;
-  line-height: 40px;
   padding-left: 5px;
   padding-right: 5px;
+  padding-top:5px;
 }
 #nav {
   display: flex;
@@ -40,10 +46,18 @@
   padding-left: 10px;
   padding-right: 10px;
   width:100%;
+  padding-top: 5px;
 }
 #menu {
   display: flex;
   flex-direction: row;
+}
+.icon{
+  width:26px;
+  height: 26px;
+}
+.tab-name{
+  padding-bottom:5px;
 }
 .product-img-container {
   width: 200px;

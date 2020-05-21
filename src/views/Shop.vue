@@ -6,6 +6,9 @@
         <div class="product-container">
           <div class="product-img-container">
             <img :src="getImgUrl(item.id)"/>
+            <div class="mask">
+              <v-icon name="heart"></v-icon>
+            </div>
           </div>
           <div class="product-info">
             <div>剩餘數量:{{ item.remainAmount }}</div>
@@ -38,6 +41,10 @@ export default {
 };
 </script>
 <style scope>
+  .shop{
+    max-width: 960px;
+    margin: 0 auto;
+  }
   #product-list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -47,6 +54,34 @@ export default {
   .product-container{
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+  .product-img-container{
+    position: relative;
+  }
+  .product-img-container img{
+    width: 100%;
+    height: 100%;
+  }
+  .mask{
+    width:100%;
+    height:100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    position: absolute;
+    top:0;
+    left:0;
+  }
+  .mask .icon{
+    display: block;
+    margin: 0 auto;
+    width: 60px;
+    height: 60px;
+    margin-top: 40px;
+    color: white;
+  }
+  .product-img-container:hover .mask{
+    display: block;
+    cursor:pointer;
   }
   .product-name{
     font-size: 24px;
@@ -73,5 +108,15 @@ export default {
   .detail-btn{
     padding: 10px 0px;
     border-radius: 5px;
+  }
+  @media (max-width:960px) and (min-width:680px){
+    #product-list{
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width:679px){
+    #product-list{
+      grid-template-columns: 1fr;
+    }
   }
 </style>
