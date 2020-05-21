@@ -8,6 +8,7 @@ export default new Vuex.Store({
   state: {
     cart: [],
     shop: [],
+    like: [],
   },
   mutations: {
     initShop(state, payload) {
