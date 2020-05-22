@@ -76,7 +76,7 @@ export default {
     margin: 0 auto;
     width: 60px;
     height: 60px;
-    margin-top: 40px;
+    margin-top: 60px;
     color: white;
   }
   .product-img-container:hover .mask{
