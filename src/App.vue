@@ -1,15 +1,15 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/" @click.native="closeLikeList" class="noFocusTab">
+      <router-link to="/shopping-site/" @click.native="closeLikeList" class="noFocusTab">
         <v-icon name="home"></v-icon><span class="tab-name">Home</span>
       </router-link>
       <div id="menu">
-        <router-link to="/Shop" @click.native="closeLikeList"
+        <router-link to="/shopping-site/Shop" @click.native="closeLikeList"
         :class="focusTab('Shop')">
           <v-icon name="list"></v-icon><span class="tab-name">商品頁</span>
         </router-link>
-        <router-link to="/Cart" @click.native="closeLikeList"
+        <router-link to="/shopping-site/Cart" @click.native="closeLikeList"
         :class="focusTab('Cart')">
           <v-icon name="shopping-cart"></v-icon>
           <span class="counter">{{ cartCount }}</span>
