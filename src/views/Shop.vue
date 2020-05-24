@@ -145,5 +145,8 @@ export default {
     #product-list{
       grid-template-columns: 1fr;
     }
+    .product-img-container:hover .mask{
+      display: none;
+    }
   }
 </style>
