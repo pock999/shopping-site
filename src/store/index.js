@@ -29,11 +29,33 @@ export default new Vuex.Store({
       },
     ],
     shop: [],
-    like: [],
+    like: [
+      {
+        id: 4,
+        name: '黑色合身T恤',
+        price: 299,
+        imageUrl: '@/assets/T-shirt-black.jpg',
+        detailInfo: {
+          description: '低調、舒服、輕鬆、簡單，給人一種隨和的感覺，不會過於強眼，同時又帶有一點獨特的魅力',
+        },
+        remainAmount: 9,
+      },
+    ],
   },
   mutations: {
     initShop(state, payload) {
       state.shop = payload;
+    },
+    toggleLike(state, payload) {
+      const hasFind = this.state.like.find((ele) => ele.id === payload.id);
+      if (hasFind) {
+        // 有找到
+        const newLikeList = this.state.like.filter((ele) => ele.id !== payload.id);
+        this.state.like = newLikeList;
+      } else {
+        // 沒找到
+        this.state.like.push(payload);
+      }
     },
   },
   actions: {
@@ -46,6 +68,9 @@ export default new Vuex.Store({
           console.log(e);
         });
     },
+    toggleLike({ commit }, item) {
+      commit('toggleLike', item);
+    },
   },
   getters: {
     cart(state) {
@@ -53,6 +78,15 @@ export default new Vuex.Store({
     },
     shop(state) {
       return state.shop;
+    },
+    like(state) {
+      return state.like;
+    },
+    likeCount(state) {
+      return state.like.length;
+    },
+    cartCount(state) {
+      return state.cart.length;
     },
   },
 });

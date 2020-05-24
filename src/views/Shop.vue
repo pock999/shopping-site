@@ -1,17 +1,29 @@
 <template>
   <div class="shop">
+    <h2><strong>商品列表</strong></h2>
     <div id="product-list">
       <div v-for="item in productList" :key="item.id" class="product-item">
-        <h2 class="product-name">{{ item.name }}</h2>
+        <h2 class="product-name">
+          {{ item.name }}
+          <span @click="toglleToLike(item)">
+            <v-icon name="heart"
+            v-if="isLikeItem(item)" style="color:#ED4956;"/>
+            <v-icon name="heart" v-else></v-icon>
+          </span>
+        </h2>
         <div class="product-container">
-          <div class="product-img-container">
+          <div class="product-img-container" @dblclick="toglleToLike(item)">
             <img :src="getImgUrl(item.id)"/>
             <div class="mask">
-              <v-icon name="heart"></v-icon>
+              <v-icon name="heart" v-if="isLikeItem(item)" style="color:#ED4956;"/>
+              <v-icon name="heart" v-else></v-icon>
             </div>
           </div>
           <div class="product-info">
             <div>剩餘數量:{{ item.remainAmount }}</div>
+            <div>
+              <v-icon name="shopping-cart"></v-icon>
+            </div>
             <div>NT${{ item.price }}</div>
             <button class="btn detail-btn">查看詳細資訊</button>
           </div>
@@ -36,6 +48,14 @@ export default {
   methods: {
     getImgUrl(pic) {
       return imageUrlGetter(pic);
+    },
+    isLikeItem(item) {
+      const isFind = this.$store.getters.like.find((ele) => ele.id === item.id);
+      return isFind;
+    },
+    toglleToLike(item) {
+      // 增加或剔除like list
+      this.$store.dispatch('toggleLike', item);
     },
   },
 };
@@ -87,12 +107,19 @@ export default {
     font-size: 24px;
     font-weight: 600;
   }
+  .product-name .icon:hover {
+    cursor: pointer;
+  }
   .product-info{
     display: flex;
     flex-direction: column;
     justify-content:space-around;
     width: 80%;
     margin: 0 auto;
+  }
+  .product-info .icon {
+    width: 14px;
+    height: 14px;
   }
   .btn{
     background-color: #268DDD;
